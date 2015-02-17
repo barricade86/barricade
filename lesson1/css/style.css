@@ -1,0 +1,57 @@
+.content
+{
+    width:auto;
+    height:auto;
+    display:block;
+}
+.photo
+{
+    position:relative;
+    border:solid 1px black;
+    margin-left:20px;
+    margin-top:10px;
+    width:230px;
+    height:auto;
+    float:left;
+    padding-left:20px;
+}
+img
+{
+    width:220px;
+    height:220px;
+}
+form
+{
+    position:relative;
+    float:left;
+    bottom:5px;
+    top:10px;
+    width:100%;
+    height:auto;
+}
+.description
+{
+    display:none;
+}
+.photo:hover .description
+{
+    content:""; /* Выводим текст */
+    position:absolute; /* Абсолютное позиционирование */
+    width:219px;
+    bottom:37px;
+    height:65px;
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный цвет фона */
+    color: white; /* Цвет текста */
+    text-align: left; /* Выравнивание текста по центру */
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    word-wrap:break-word;
+    font-size: 9px; /* Размер текста подсказки */
+    border: 1px solid #333; /* Параметры рамки */
+    display:block;
+}
+.photolink
+{
+    text-decoration:none;
+    color:gray;
+}
