@@ -8,7 +8,6 @@
     session_start();
     require_once '../models/auth.php';
     $ErrMessage=null;
-    $auth=false;
     //var_dump(isset($_POST['remember']));
     if(empty($_POST['login']) or empty($_POST['pass']))
     {
@@ -23,9 +22,8 @@
         $password=$_POST['pass'];
     }
     $remember=$_POST['remember'];
-    $auth=CheckLoginParams($login,$password);
     //var_dump($auth);
-    if($auth==true)
+    if(CheckLoginParams($login,$password))
     {
         $_SESSION['auth_result']='ok';
         login($login,$remember);
@@ -36,5 +34,5 @@
         $_SESSION['auth_result']='error';
         $ErrMessage='Неверный логин или пароль';
         SetError($ErrMessage);
-        header('Location: index.php');
+        header('Location: ./index.php');
     }

@@ -38,21 +38,6 @@ function login($login,$remember)
     }
     return true;
 }
-/*Получение имени пользователя*/
-function GetLoginedUsername()
-{
-    return isset($_COOKIE['usercookie'])?($_COOKIE['usercookie']):($_SESSION['auth_name']);
-}
-/*Инициализация ошибки*/
-function SetAuthError($ErrText)
-{
-    $_SESSION['error']=$ErrText;
-}
-/*Считывание текста ошибки*/
-function GetAuthError()
-{
-    return isset($_SESSION['error'])?($_SESSION['error']):(null);
-}
 /*Разлогинивание пользователя*/
 function logout()
 {
