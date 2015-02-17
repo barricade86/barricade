@@ -89,12 +89,5 @@ function ModifyQueryResult($SqlText)
         return null;
     }
     mysql_close($ConnectHandler);
-    if(mysql_affected_rows()>0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return mysql_affected_rows();
 }
