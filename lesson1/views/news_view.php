@@ -17,23 +17,13 @@
             {
                 foreach($news as $article)
                 {
-                    if(!isset($_GET['id']))
-                    {
-                        $Url='../public/index.php?id='.$article['NewsId'];
-                        $LinkText='Просмотреть отдельно';
-                    }
-                    else
-                    {
-                        $Url='../public/index.php';
-                        $LinkText='Назад';
-                    }
                     ?>
                     <section>
                         <header><b><?=$article['newsHeader'];?></b></header>
                         <article>
                             <?=$article['NewsText'];?>
                             <p><time datetime="<?=$article['publishdate'];?>" pubdate="pubdate"><b>Дата публикации:</b><?=$article['publishdate'];?></time></p>
-                            <p><a href="<?=$Url;?>"><?=$LinkText;?></a></p>
+                            <p><a href="../public/index.php?id=<?=$article['NewsId'];?>">Просмотреть отдельно</a></p>
                         </article>
                     </section>
                 <?php

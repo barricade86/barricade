@@ -7,4 +7,8 @@
  */
  session_start();
  require_once '../models/news.php';
- requIre_once '../views/news_form.php';
+ if(isset($_GET['action']) && $_GET['action']=='add')
+ {
+    require '../controllers/postnews.php';
+ }
+ require_once '../views/news_form.php';

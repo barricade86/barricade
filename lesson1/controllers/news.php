@@ -7,4 +7,11 @@
  */
   require_once '../models/news.php';
   $news=isset($_GET['id'])?(GetNewsById($_GET['id'])):(getAllNews());
-  require_once '../views/news_view.php';
+  if(!isset($_GET['id']))
+  {
+    require_once '../views/news_view.php';
+  }
+  else
+  {
+    require_once '../views/show_news.php';
+  }

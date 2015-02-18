@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		    <p><b>Войдите на сайт под своим именем для получения расширенных возможностей:</b></p>
-			<form action="<?=ROOT_DIR;?>controllers/login.php" method="POST">
+			<form action="../controllers/login.php" method="POST">
 			  <label for="login">логин:</label><input type="text" name="login" required>
 			  <label for="pass">пароль:</label><input type="password" name="pass" required>
 			  <label for="remember">Запомнить меня</label><input type="checkbox" name="remember">

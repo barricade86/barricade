@@ -44,8 +44,7 @@ function GetOneRow($SqlText)
         $result[]=$row;
     }
     mysql_close($Connect);
-    return $result;
-    //return array_pop($result);
+    return array_pop($result);
 }
 /*Функция для получения массива из базы данных*/
 function GetQueryResult($SqlText)
@@ -89,6 +88,6 @@ function ModifyQueryResult($SqlText)
         SetError('Ошибка при выполнении запроса');
         return null;
     }
-    mysql_close($ConnectHandler);
+    //mysql_close($Connect);
     return mysql_affected_rows();
 }

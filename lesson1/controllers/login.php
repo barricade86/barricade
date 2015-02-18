@@ -9,6 +9,7 @@
     require_once '../models/auth.php';
     $ErrMessage=null;
     //var_dump(isset($_POST['remember']));
+    //print_r($_POST);
     if(empty($_POST['login']) or empty($_POST['pass']))
     {
         $ErrMessage='Вы не заполнили необходимые поля';
@@ -21,13 +22,12 @@
         $login=$_POST['login'];
         $password=$_POST['pass'];
     }
-    $remember=$_POST['remember'];
-    //var_dump($auth);
+    $remember=isset($_POST['remember'])?($_POST['remember']):(null);
     if(CheckLoginParams($login,$password))
     {
         $_SESSION['auth_result']='ok';
         login($login,$remember);
-        header('Location: ../views/news_form.php');
+        header('Location: ../controllers/news_add.php');
     }
     else
     {
