@@ -8,4 +8,4 @@
     session_start();
     require_once '../models/auth.php';
     logout();
-    header('Location: ../index.php');
+    header('Location: ../public/index.php');

@@ -5,12 +5,12 @@
  * Date: 17.02.2015
  * Time: 14:31
  */
-require_once '../configs/config.php';
 //Функция соединения с базой данных
 function DbConnect()
 {
-    $connect=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD);
-    if(!$connect || !mysql_select_db(DB_NAME))
+    $ConnectParams=include '../configs/DbConf.php';
+    $connect=mysql_connect($ConnectParams['DB_HOST'],$ConnectParams['DB_USER'],$ConnectParams['DB_PASSWORD']);
+    if(!$connect || !mysql_select_db($ConnectParams['DB_NAME']))
     {
         return false;
     }
@@ -44,7 +44,8 @@ function GetOneRow($SqlText)
         $result[]=$row;
     }
     mysql_close($Connect);
-    return array_pop($result);
+    return $result;
+    //return array_pop($result);
 }
 /*Функция для получения массива из базы данных*/
 function GetQueryResult($SqlText)

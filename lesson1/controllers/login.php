@@ -27,12 +27,12 @@
     {
         $_SESSION['auth_result']='ok';
         login($login,$remember);
-        header('Location: ./news.php');
+        header('Location: ../views/news_form.php');
     }
     else
     {
         $_SESSION['auth_result']='error';
         $ErrMessage='Неверный логин или пароль';
         SetError($ErrMessage);
-        header('Location: ./index.php');
+        header('Location: ../public/index.php');
     }
