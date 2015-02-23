@@ -5,7 +5,12 @@
     <title>Добавление новости</title>
 </head>
 <body>
-<main role="main">
+    <?php
+    echo $User;
+    ?>
+    <a href="logout.php">Выйти</a>
+
+  <main role="main">
     <form action="../components/AddNews.php" method="POST">
         <label for="header">Заголовок:</label><br><input type="text" name="header" required placeholder="Введите заголовок" size="78"><br>
         <label for="preview">Текст для превью:</label><br>

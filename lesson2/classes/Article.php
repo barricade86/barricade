@@ -9,7 +9,10 @@
 abstract class Article
 {
    abstract protected function CreateRecord($RecTitle,$RecPreview,$RecText,$RecTags);
-   abstract protected function GetAllRecords();
+   protected static function GetAllRecords()
+   {
+      return null;
+   }
    abstract protected function GetRecordById($RecId);
    abstract protected function UpdateRecord($RecId,$ParamsArr);
 }

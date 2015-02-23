@@ -8,18 +8,10 @@
 
 class Db
 {
-    private $db_host;
-    private $db_user;
-    private $db_pass;
-    private $db_name;
     private static $db_conn_handler;
-    public function __construct($dbhost,$dbuser,$dbpass,$dbname)
+    public function __construct($host,$user,$pass,$name)
     {
-        $this->db_host=$dbhost;
-        $this->db_user=$dbuser;
-        $this->db_pass=$dbpass;
-        $this->db_name=$dbname;
-        self::$db_conn_handler=new mysqli($this->db_host,$this->db_user,$this->db_pass,$this->db_name);
+        self::$db_conn_handler=new mysqli($host,$user,$pass,$name);
         return (self::$db_conn_handler->connect_error)?(true):(false);
     }
     //Метод для получения массива результатов

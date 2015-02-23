@@ -34,7 +34,7 @@ class News extends Article
        return self::$DbInstance->ModifyQuery($SqlTest);
    }
    //Получения списка новостей
-   public function GetAllRecords()
+   public static function GetAllRecords()
    {
        $SqlText="SELECT NewsId,newsHeader,NewsPreview,NewsText,tags,publishdate FROm news ORDER BY publishdate DESC";
        return Db::GetQueryResult($SqlText);
