@@ -4,14 +4,17 @@
     <title>Просмотр новостей</title>
 </head>
 <body>
+<?php
+  extract($this->PageData);
+ ?>
 <main role="main">
         <section>
-            <header><?= $item['Newsheader']; ?></header>
+            <header><?= $Newsheader; ?></header>
             <article>
-                <?= $item['Newstext']; ?>
+                <?= $Newstext; ?>
                 <p>
-                    <time datetime="<?= $item['publishdate']; ?>" pubdate="pubdate">
-                        <b>PubDate:</b><?= $item['publishdate']; ?></time>
+                    <time datetime="<?= $publishdate; ?>" pubdate="pubdate">
+                        <b>PubDate:</b><?= $publishdate; ?></time>
                 </p>
                 <p><a href="./index.php?ctrl=News&act=All">Back</a></p>
             </article>

@@ -16,12 +16,16 @@
      {
          //echo "Gun or GTFO";
          $news=News::getAllNews();
-         include __DIR__ . '/../views/news/news_view.php';
+         $View=new View($news);
+         $file=__DIR__.'/../views/news/news_view.php';
+         $View->display($file);
      }
      public function actionOne()
      {
          $id=isset($_GET['id'])?($_GET['id']):(null);
          $item=News::getOneRec($id);
-         include __DIR__ . '/../views/news/news_one_view.php';
+         $file=__DIR__ . '/../views/news/news_one_view.php';
+         $view=new View($item);
+         $view->display($file);
      }
  }

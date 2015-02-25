@@ -8,17 +8,18 @@
          <a href="./index.php?ctrl=NewsAdmin&act=Main">Show Admin</a>
        <?php
          //print_r($news);
-         foreach($news as $list)
+         foreach($this->PageData as $list)
          {
+             extract($list);
              ?>
              <section>
-                 <header><?= $list['Newsheader']; ?></header>
+                 <header><?= $Newsheader; ?></header>
                  <article>
-                     <?= $list['NewsPreview']; ?>
+                     <?= $NewsPreview; ?>
                      <p>
-                         <time datetime="<?= $list['publishdate']; ?>" pubdate="pubdate">
-                             <b>PubDate:</b><?= $list['publishdate']; ?></time>
-                         <a href="./index.php?ctrl=News&act=One&id=<?=$list['NewsId']?>">Show Full Text</a>
+                         <time datetime="<?= $publishdate; ?>" pubdate="pubdate">
+                             <b>PubDate:</b><?= $publishdate; ?></time>
+                         <a href="./index.php?ctrl=News&act=One&id=<?=$NewsId;?>">Show Full Text</a>
                      </p>
                  </article>
              </section>
