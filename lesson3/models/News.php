@@ -6,13 +6,13 @@
  * Time: 15:50
  */
  //require_once __DIR__.'/../classes/Db.php';
- class News
+ class News extends Article
  {
      public function __construct()
      {
 
      }
-     public static function getAllNews()
+     public static function getAllRecords()
      {
          $SqlText="select NewsId,Newsheader,NewsPreview,Newstext,Newstags,publishdate FROM news ORDER BY publishdate DESC";
          return Db::GetDbInstance()->GetQueryResultArray($SqlText);

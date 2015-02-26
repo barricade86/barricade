@@ -14,8 +14,7 @@
      }
      public function actionAll()
      {
-         //echo "Gun or GTFO";
-         $news=News::getAllNews();
+         $news=News::getAllRecords();
          $View=new View($news);
          $file=__DIR__.'/../views/news/news_view.php';
          $View->display($file);
