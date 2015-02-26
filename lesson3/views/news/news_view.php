@@ -8,9 +8,9 @@
          <a href="./index.php?ctrl=NewsAdmin&act=Main">Show Admin</a>
        <?php
          //print_r($news);
-         foreach($this->PageData as $list)
+         foreach($items as $item)
          {
-             extract($list);
+             extract($item);
              ?>
              <section>
                  <header><?= $Newsheader; ?></header>

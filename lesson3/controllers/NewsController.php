@@ -15,9 +15,10 @@
      public function actionAll()
      {
          $news=News::getAllRecords();
-         $View=new View($news);
          $file=__DIR__.'/../views/news/news_view.php';
-         $View->display($file);
+         $View=new View($news);
+         $View->assign('items',$file);
+         $View->display();
      }
      public function actionOne()
      {
@@ -25,6 +26,7 @@
          $item=News::getOneRec($id);
          $file=__DIR__ . '/../views/news/news_one_view.php';
          $view=new View($item);
-         $view->display($file);
+         $view->assign('item',$file);
+         $view->display();
      }
  }

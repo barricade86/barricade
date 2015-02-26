@@ -5,7 +5,7 @@
 </head>
 <body>
 <?php
-  extract($this->PageData);
+  extract($item);
  ?>
 <main role="main">
         <section>
