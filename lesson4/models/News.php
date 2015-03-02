@@ -25,7 +25,8 @@ class News extends Article
   }
   public function CreateRecord($header,$PreviewText,$FullText,$SearchTags)
   {
-     $SqlText="INSERT INTO news (NewsId,NewsHeader,NewsPreview,NewsText,publishdate,NewsTags) VALUES(null,'".$header."','".$PreviewText."','".$FullText."',NOW(),'".$SearchTags."')";
+     $SqlText="INSERT INTO news(NewsId,NewsHeader,NewsPreview,NewsText,NewsTags,publishdate) VALUES(null,'".$header."','".$PreviewText."','".$FullText."','".$SearchTags."',NOW())";
+     echo $SqlText;
      return Db::GetDbInstance()->ModifyQuery($SqlText);
   }
 }

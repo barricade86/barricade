@@ -9,9 +9,11 @@
 class View
 {
    private $data=[];
+   //private $vars=[];
+   //private $position;
    public function __construct()
    {
-
+       //$this->position=0;
    }
    public function assign($name,$value)
    {
@@ -24,5 +26,13 @@ class View
           $$key=$value;
        }
        include __DIR__.'/../views/'.$template;
+   }
+   public function __set($key,$value)
+   {
+       die("Неизвестное свойство");
+   }
+   public function __get($key)
+   {
+       die("Чтение данных из недоступных свойств");
    }
 }
