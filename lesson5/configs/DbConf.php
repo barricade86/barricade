@@ -1,0 +1,2 @@
+<?php
+  return ['DbHost'=>'localhost','DbUser'=>'barricade','DbPass'=>'AtFSkMJ11xZF19','DbName'=>'devastator'];
