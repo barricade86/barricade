@@ -4,19 +4,16 @@
     <title>Просмотр новостей</title>
 </head>
 <body>
-<?php
-  extract($item);
- ?>
 <main role="main">
         <section>
-            <header><?= $NewsHeader; ?></header>
+            <header><?= $item->NewsHeader; ?></header>
             <article>
-                <?= $NewsText; ?>
+                <?= $item->NewsText; ?>
                 <p>
-                    <time datetime="<?= $publishdate; ?>" pubdate="pubdate">
-                        <b>PubDate:</b><?= $publishdate; ?></time>
+                    <time datetime="<?= $item->publishdate; ?>" pubdate="pubdate">
+                        <b>PubDate:</b><?= $item->publishdate; ?></time>
                 </p>
-                <p><a href="./index.php?block=News&action=GetAll">Back</a></p>
+                <p><a href="./index.php?block=News&action=All">Back</a></p>
             </article>
         </section>
 </main>

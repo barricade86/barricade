@@ -29,6 +29,11 @@
          $query->execute($Params);
          $result=$query->fetchAll(PDO::FETCH_CLASS,$this->CLassName);
          return $result;
-
+     }
+     public function InsertQuery($SqlText,$Params)
+     {
+         $query=self::$PdoLink->prepare($SqlText);
+         $query->execute($Params);
+         return self::$PdoLink->lastInsertId();
      }
   }
