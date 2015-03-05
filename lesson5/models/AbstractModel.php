@@ -5,19 +5,22 @@
  * Date: 03.03.15
  * Time: 20:06
  */
-
+/*
+ $Updates=["What"=>[],Clause=>[":NewsId=>2]]
+ *
+ */
 abstract class AbstractModel
 {
     protected static $table;
-    protected $data=[];
+    protected $WhatData=[];
     private $RecId;
     public function __set($name,$value)
     {
-        $this->data[$name]=$value;
+        $this->WhatData[$name]=$value;
     }
     public function __get($name)
     {
-        return $this->data[$name];
+        return $this->WhatData[$name];
     }
     public static function findAll()
     {
@@ -45,15 +48,15 @@ abstract class AbstractModel
     public function insert()
     {
         $class=get_called_class();
-        $cols=implode(',',array_keys($this->data));
-        foreach(array_keys($this->data) as $fields)
+        $cols=implode(',',array_keys($this->WhatData));
+        foreach(array_keys($this->WhatData) as $fields)
         {
             $ins[]=':'.$fields;
         }
         $values=implode(',',$ins);
         Db::GetDbInstance()->setClassName($class);
         $SqlText='INSERT INTO '.static::$table.' ('.$cols.') VALUES ('.$values.')';
-        $this->RecId=Db::GetDbInstance()->InsertQuery($SqlText,array_combine($ins,array_values($this->data)));
+        $this->RecId=Db::GetDbInstance()->InsertQuery($SqlText,array_combine($ins,array_values($this->WhatData)));
         return $this->RecId;
     }
     public function update()
@@ -61,14 +64,24 @@ abstract class AbstractModel
         $class=get_called_class();
         Db::GetDbInstance()->setClassName($class);
         $SqlText='UPDATE '.static::$table.' SET ';
+        $UpdateClause=array_pop($this->WhatData);
+        $cols=array_keys($this->WhatData);
+        $upd=[];
+        foreach($cols as $col)
+        {
+            $SqlText.=$col.'=:'.$col.',';
+            $upd[]=':'.$col;
+        }
+        $SqlText=substr($SqlText,0,-1);
+        $SqlText.=' WHERE '.str_replace(':','',key($UpdateClause)).'='.key($UpdateClause);
+        Db::GetDbInstance()->UpdateOrDeleteQuery($SqlText,array_combine($upd,array_values($this->WhatData)));
     }
     public function delete()
     {
         $class=get_called_class();
         Db::GetDbInstance()->setClassName($class);
-        $columnname=':'.key($this->data);
-        $SqlText='DELETE FROM '.static::$table.' WHERE '.key($this->data).'='.$columnname;
-        echo $SqlText;
-        Db::GetDbInstance()->UpdateOrDeleteQuery($SqlText,[$columnname=>current($this->data)]);
+        $columnname=':'.key($this->WhatData);
+        $SqlText='DELETE FROM '.static::$table.' WHERE '.key($this->WhatData).'='.$columnname;
+        Db::GetDbInstance()->UpdateOrDeleteQuery($SqlText,[$columnname=>current($this->WhatData)]);
     }
 }
