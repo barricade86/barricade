@@ -67,14 +67,16 @@ abstract class AbstractModel
         $UpdateClause=array_pop($this->WhatData);
         $cols=array_keys($this->WhatData);
         $upd=[];
+        //print_r($this->WhatData);
         foreach($cols as $col)
         {
             $SqlText.=$col.'=:'.$col.',';
             $upd[]=':'.$col;
+
         }
         $SqlText=substr($SqlText,0,-1);
         $SqlText.=' WHERE '.str_replace(':','',key($UpdateClause)).'='.key($UpdateClause);
-        Db::GetDbInstance()->UpdateOrDeleteQuery($SqlText,array_combine($upd,array_values($this->WhatData)));
+        Db::GetDbInstance()->UpdateOrDeleteQuery($SqlText,array_merge(array_combine($upd,array_values($this->WhatData)),$UpdateClause));
     }
     public function delete()
     {

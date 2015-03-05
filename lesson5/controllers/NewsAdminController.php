@@ -55,5 +55,6 @@
         $NewsId=isset($_GET['id']) ? (int)$_GET['id'] : null;
         $NewsRecord->WHERE=[':NewsId'=>$NewsId];
         $NewsRecord->update();
+         header('Location: ./index.php');
      }
  }
