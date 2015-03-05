@@ -36,4 +36,10 @@
          $query->execute($Params);
          return self::$PdoLink->lastInsertId();
      }
+     public function UpdateOrDeleteQuery($SqlText,$Params=[])
+     {
+         $query=self::$PdoLink->prepare($SqlText);
+         $query->execute($Params);
+         return $query->rowCount();
+     }
   }

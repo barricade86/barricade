@@ -26,4 +26,12 @@
          $NewsRecord->insert();
          header('Location: ./index.php');
      }
+     public function actionKill()
+     {
+         $NewsRecord=new News();
+         $NewsRecord->NewsId=isset($_GET['id']) ? (int)$_GET['id'] : null;
+         $NewsRecord->delete();
+         header('Location: ./index.php');
+     }
+
  }

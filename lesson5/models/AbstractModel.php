@@ -51,8 +51,24 @@ abstract class AbstractModel
             $ins[]=':'.$fields;
         }
         $values=implode(',',$ins);
+        Db::GetDbInstance()->setClassName($class);
         $SqlText='INSERT INTO '.static::$table.' ('.$cols.') VALUES ('.$values.')';
         $this->RecId=Db::GetDbInstance()->InsertQuery($SqlText,array_combine($ins,array_values($this->data)));
         return $this->RecId;
+    }
+    public function update()
+    {
+        $class=get_called_class();
+        Db::GetDbInstance()->setClassName($class);
+        $SqlText='UPDATE '.static::$table.' SET ';
+    }
+    public function delete()
+    {
+        $class=get_called_class();
+        Db::GetDbInstance()->setClassName($class);
+        $columnname=':'.key($this->data);
+        $SqlText='DELETE FROM '.static::$table.' WHERE '.key($this->data).'='.$columnname;
+        echo $SqlText;
+        Db::GetDbInstance()->UpdateOrDeleteQuery($SqlText,[$columnname=>current($this->data)]);
     }
 }
