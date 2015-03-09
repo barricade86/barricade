@@ -35,6 +35,10 @@ abstract class AbstractModel
         $SqlText='SELECT * FROM '.static::$table.' WHERE NewsId=:id';
         Db::GetDbInstance()->setClassName($class);
         $result=Db::GetDbInstance()->GetQuery($SqlText,[':id'=>$id]);
+        if(!$result)
+        {
+            return false;
+        }
         return array_pop($result);
     }
     public static function findByColumn($ParamName,$ParamValue)

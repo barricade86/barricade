@@ -39,16 +39,23 @@
              throw new DbException();
          }
          $result=$query->fetchAll(PDO::FETCH_CLASS,$this->CLassName);
-         if(!$result || is_null($result))
+         if(!$result)
          {
-             throw new DbException();
+             return false;
          }
          return $result;
      }
      public function InsertQuery($SqlText,$Params)
      {
          $query=self::$PdoLink->prepare($SqlText);
-         $query->execute($Params);
+         if(!$query)
+         {
+             throw new PDOException();
+         }
+         if($query->execute($Params))
+         {
+             throw new PDOException();
+         }
          return self::$PdoLink->lastInsertId();
      }
      public function UpdateOrDeleteQuery($SqlText,$Params=[])
