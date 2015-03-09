@@ -11,7 +11,6 @@ class ErrLogger
     private $fileName=null;
     private $fileDate=null;
     private $fileErrText=null;
-    const LogPath='/../Logs/';
     public function __construct($filename)
     {
          $currDate=new DateTime('now');
@@ -20,11 +19,11 @@ class ErrLogger
     }
     public static function readLogFile($fileName)
     {
-       if(!file_exists(self::LogPath.$fileName))
+       if(!file_exists(__DIR__.'/../Logs/'.$fileName))
        {
            return null;
        }
-       return file_get_contents(self::LogPath.$fileName);
+       return file_get_contents(__DIR__.'/../Logs/'.$fileName);
     }
     public function assignError($ErrText)
     {
@@ -33,12 +32,12 @@ class ErrLogger
     public function writeLog()
     {
         $mode='a';
-        if(!file_exists($this->fileName))
+        if(!file_exists(__DIR__.'/../Logs/'.$this->fileName))
         {
             $mode='w';
         }
         $fileContent=$this->fileDate.':'.$this->fileErrText.'\r\n';
-        $fi=fopen($this->LogPath.$this->fileName,$mode);
+        $fi=fopen(__DIR__.'/../Logs/'.$this->fileName,$mode);
         fwrite($fi,$fileContent);
         fclose($fi);
     }
