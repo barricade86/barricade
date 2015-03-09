@@ -8,11 +8,23 @@
       $method='action'.$action;
       $ctrl->$method();
   }
+  catch(E404Exception $err404)
+  {
+      $view=new View();
+      $ErrMessage=$err404->getMessage();
+      $view->assign('ErrMessage',$ErrMessage);
+      $template='ErrPages/404Err.php';
+      $view->display($template);
+  }
   catch (PDOException $dbe)
   {
-      die('Something wrong with DB'.$dbe->getMessage());
+      $view=new View();
+      $DbErrMessage=$dbe->getMessage();
+      $view->assign('DbError',$DbErrMessage);
+      $template='ErrPages/403Err.php';
+      $view->display($template);
   }
   catch(Exception $e)
   {
-        die('Something was wrong.See details in log file'.$e->getMessage());
+        die('Something was wrong.See details in log file');
   }

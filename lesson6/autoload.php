@@ -17,4 +17,8 @@
       {
           require __DIR__.'/interfaces/'.$ClassName.'.php';
       }
+      else
+      {
+          throw new E404Exception('Page '.$ClassName.' does not exists');
+      }
   }
