@@ -1,5 +1,6 @@
 <?php
-  use App\includes\Exceptions;
+  require __DIR__.'/vendor/autoload.php';
+  use App\includes\E404Exception;
   function __autoload($ClassName)
   {
       $ClassPath=explode('\\',$ClassName);
@@ -28,9 +29,9 @@
       elseif(file_exists(__DIR__.'/interfaces/'.$ClassName.'.php'))
       {
           require __DIR__.'/interfaces/'.$ClassName.'.php';
-      }
+      }*/
       else
       {
           throw new E404Exception('Page '.$ClassName.' does not exists');
-      }*/
+      }
   }
