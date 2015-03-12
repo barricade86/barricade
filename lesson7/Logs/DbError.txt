@@ -1,0 +1,11 @@
+2015-03-09 16:28:SQLSTATE[28000] [1045] Access denied for user 'barricade'@'localhost' (using password: YES)__file:/var/www/barricade/ProgSchool/lesson6/classes/Db.php__Line:12__Trace:#0 /var/www/barricade/ProgSchool/lesson6/classes/Db.php(12): PDO->__construct('mysql:host=loca...', 'barricade', 'AtFSkMJ11xZF')
+#1 /var/www/barricade/ProgSchool/lesson6/classes/Db.php(26): Db->__construct()
+#2 /var/www/barricade/ProgSchool/lesson6/models/AbstractModel.php(29): Db::GetDbInstance()
+#3 /var/www/barricade/ProgSchool/lesson6/controllers/NewsController.php(17): AbstractModel::findAll()
+#4 /var/www/barricade/ProgSchool/lesson6/index.php(9): NewsController->actionAll()
+#5 {main}\r\n2015-03-09 16:28:SQLSTATE[28000] [1045] Access denied for user 'barricade'@'localhost' (using password: YES)__file:/var/www/barricade/ProgSchool/lesson6/classes/Db.php__Line:12__Trace:#0 /var/www/barricade/ProgSchool/lesson6/classes/Db.php(12): PDO->__construct('mysql:host=loca...', 'barricade', 'AtFSkMJ11xZF')
+#1 /var/www/barricade/ProgSchool/lesson6/classes/Db.php(26): Db->__construct()
+#2 /var/www/barricade/ProgSchool/lesson6/models/AbstractModel.php(29): Db::GetDbInstance()
+#3 /var/www/barricade/ProgSchool/lesson6/controllers/NewsController.php(17): AbstractModel::findAll()
+#4 /var/www/barricade/ProgSchool/lesson6/index.php(9): NewsController->actionAll()
+#5 {main}\r\n
