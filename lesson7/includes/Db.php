@@ -51,11 +51,11 @@
          $query=self::$PdoLink->prepare($SqlText);
          if(!$query)
          {
-             throw new PDOException();
+             throw new \PDOException();
          }
-         if($query->execute($Params))
+         if(!$query->execute($Params))
          {
-             throw new PDOException();
+             throw new \PDOException();
          }
          return self::$PdoLink->lastInsertId();
      }

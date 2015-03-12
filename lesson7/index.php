@@ -1,5 +1,8 @@
 <?php
   require './autoload.php';
+  use App\includes\View;
+  use App\includes\E404Exception;
+  use App\includes\ErrLogger;
   $controller=isset($_GET['controller']) ? 'App\controllers\\'.$_GET['controller'].'Controller' : 'App\\controllers'.'\\NewsController';
   $action=isset($_GET['action']) ? $_GET['action'] : 'All';
   try

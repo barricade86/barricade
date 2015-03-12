@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: barricade
- * Date: 09.03.15
- * Time: 15:17
- */
-
+namespace App\includes;
 class ErrLogger
 {
     private $fileName=null;
@@ -13,7 +7,7 @@ class ErrLogger
     private $fileErrText=null;
     public function __construct($filename)
     {
-         $currDate=new DateTime('now');
+         $currDate=new \DateTime('now');
          $this->fileDate=$currDate->format('Y-m-d H:i');
          $this->fileName=$filename.'.txt';
     }

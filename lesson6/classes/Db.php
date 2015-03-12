@@ -52,7 +52,7 @@
          {
              throw new PDOException();
          }
-         if($query->execute($Params))
+         if(!$query->execute($Params))
          {
              throw new PDOException();
          }

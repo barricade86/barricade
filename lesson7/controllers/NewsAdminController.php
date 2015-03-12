@@ -24,10 +24,11 @@
          $view->assign('item',$record);
          $template='news/news_edit_view.php';
          $view->display($template);
-         header('Location: ./index.php');
+         //header('Location: ./index.php');
      }
      public function actionAdd()
      {
+
          if(!isset($_POST['NewsHeader']) || !isset($_POST['NewsPreview']) || !isset($_POST['NewsText']) || !isset($_POST['NewsTags']))
          {
              header("HTTP/1.0 404 Not Found");

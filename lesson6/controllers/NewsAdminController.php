@@ -26,7 +26,7 @@
          $view->assign('item',$record);
          $template='news/news_edit_view.php';
          $view->display($template);
-         header('Location: ./index.php');
+         //header('Location: ./index.php');
      }
      public function actionAdd()
      {

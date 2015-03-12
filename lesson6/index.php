@@ -15,9 +15,6 @@
       $view->assign('ErrMessage',$ErrMessage);
       $template='ErrPages/404Err.php';
       $view->display($template);
-      $err=new ErrLogger('PageNotFound');
-      $err->assignError($err404->getMessage().'__file:'.$err404->getFile().'__Line:'.$err404->getLine().'__Trace:'.$err404->getTraceAsString());
-      $err->writeLog();
   }
   catch (PDOException $dbe)
   {
