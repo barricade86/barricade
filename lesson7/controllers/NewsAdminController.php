@@ -41,7 +41,7 @@
          $NewsRecord->NewsTags=$_POST['NewsTags'];
          $NewsRecord->publishdate='NOW()';
          $NewsRecord->insert();
-         $mail=new PHPMailer();
+         $mail=new \PHPMailer();
          $mail->addAddress('shilov.kirill.transas@gmail.com');
          $mail->Body='Created news';
          $mail->AltBody='Body created';

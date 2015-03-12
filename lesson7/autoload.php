@@ -1,5 +1,4 @@
 <?php
-  require __DIR__.'/vendor/autoload.php';
   use App\includes\E404Exception;
   function __autoload($ClassName)
   {
@@ -34,4 +33,6 @@
       {
           throw new E404Exception('Page '.$ClassName.' does not exists');
       }
+      spl_autoload_register('__autoload');
+      require __DIR__.'/vendor/autoload.php';
   }
