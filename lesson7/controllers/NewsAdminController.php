@@ -3,6 +3,7 @@
  use App\models\News;
  use App\includes\View;
  use App\includes\E404Exception;
+ include __DIR__.'/../vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
  class NewsAdminController
  {
      public function __construct()
@@ -42,6 +43,13 @@
          $NewsRecord->publishdate='NOW()';
          $NewsRecord->insert();
          $mail=new \PHPMailer();
+         $mail->isSMTP();
+         $mail->Host='smtp.gmail.com';
+         $mail->Username='shilov.kirill.transas@gmail.com';
+         $mail->Password='qwertyASDFGHzxcvbn';
+         $mail->SMTPAuth = true;
+         $mail->SMTPSecure = 'ssl';
+         $mail->Port = '465';
          $mail->addAddress('shilov.kirill.transas@gmail.com');
          $mail->Body='Created news';
          $mail->AltBody='Body created';
