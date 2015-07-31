@@ -1,0 +1,291 @@
+{% extends 'WrapBootstrap/index.html' %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="fa fa-gear"></span></button><a href="#" class="navbar-brand"><span>idNT</span></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Главная</a></li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href="#">Помощь <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a target="_blank" href="/images/instr-CRM-v1.3.pdf">Руководство пользователя</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right user-nav">
+                <li class="dropdown profile_menu"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><img alt="Avatar" src="{{ asset('/Layouts/WrapBootstrap/assets/img/avatars/ava-user-01.jpg') }}"><span>Александр Снитко</span><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Профиль</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Выход</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    <div id="cl-wrapper">
+        <div id="pcont" class="container-fluid">
+            <div class="cl-mcont-">
+                <div class="block-flat">
+                    <div class="header">
+                        <h3>Загрузка данных</h3>
+                        <button class="btn btn-default btn-flat" data-toggle="modal" data-target="#add-new-source" type="button"><i class="fa fa-plus"></i> Источник</button>
+                        <button class="btn btn-default btn-flat" data-toggle="modal" data-target="#add-date-range" type="button"><i class="fa fa-plus"></i> Период</button>
+                        <button class="btn btn-default btn-flat" data-toggle="modal" data-target="#add-files" type="button"><i class="fa fa-plus"></i> Загрузить файл</button>
+                    </div>
+                    <!-- Modal-->
+                    <div id="add-new-source" tabindex="-1" role="dialog" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="#">
+                                    <div class="modal-header">
+                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+                                        <h3>Добавить новый источник</h3>
+                                    </div>
+                                    <div class="modal-body" style="min-height: 140px">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <label class="control-label">Выбрать источник:</label>
+                                                <select multiple="" class="select2">
+                                                    {% for item in items %}
+                                                        <option value="{{item.__id}}">{{item.title}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-sm-6">
+                                                    <label class="col-sm-6 control-label">Тип источника</label><br>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="rad1" class="icheck" value="1" checked> Дистрибьютор
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="rad1" class="icheck" value="2"> Аптечные сети
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-6">
+                                                    <label class="col-sm-6 control-label">Показатель</label><br>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="rad2" class="icheck" value="1" checked> Продажи
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="rad2" class="icheck" value="2"> Остатки
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal" class="btn btn-default">Отмена</button>
+                                        <button type="button" data-dismiss="modal" class="btn btn-success" id="sourceAdd">Добавить</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.modal-content-->
+                        </div><!-- /.modal-dialog-->
+                    </div>
+                    <!-- /.modal-->
+                    <!-- Modal2-->
+                    <div id="add-date-range" tabindex="-1" role="dialog" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="#" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                                    <div class="modal-header">
+                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+                                        <h3>Добавить период</h3>
+                                    </div>
+                                    <div class="modal-body" style="">
+                                        <div class="form-group">
+                                            <label class="col-sm-3- control-label" style="padding-top: 8px">Выберите начало и окончание периода</label>
+                                            <div class="col-sm-6">
+                                                <fieldset>
+                                                    <div class="control-group">
+                                                        <div class="controls">
+                                                            <div class="input-prepend input-group"><span class="add-on input-group-addon primary"><span class="glyphicon glyphicon-th"></span></span>
+                                                                <input id="reservation" type="text" style="width: 200px" name="reservation" value="03/18/2014 - 03/23/2014" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal" class="btn btn-default">Отмена</button>
+                                        <button type="button" data-dismiss="modal" class="btn btn-success" id="btnSuccessPeriod">Добавить</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.modal-content-->
+                        </div><!-- /.modal-dialog2-->
+                    </div>
+                    <!-- /.modal2-->
+
+                    <!-- Modal3-->
+                    <div id="add-files" tabindex="-1" role="dialog" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+                                    <h3>Добавить файл с данными</h3>
+                                </div>
+                                <div class="modal-body" style="">
+                                    <div class="row">
+                                        <div class="col-sm-6" id="sourceName"></div>
+                                        <div class="col-sm-6" id="params"></div>
+                                        <div class="col-sm-6" id="period"></div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" class="icheck"> Файл для обратной загрузки
+                                        </label>
+                                    </div>
+                                    <form id="my-awesome-dropzone" action="{{ publish('/Layouts/WrapBootstrap/assets/lib/dropzone/upload.php') }}" class="dropzone">
+                                        <div class="dz-message">
+                                            <h2>Перетащите файлы сюда или нажмите, чтобы загрузить.</h2><span class="note">Selected files are actually uploaded.)</span>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" data-dismiss="modal" class="btn btn-default">Отмена</button>
+                                    <button type="button" data-dismiss="modal" class="btn btn-success" id="btnFileUpload">Сохранить</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content-->
+                        </div><!-- /.modal-dialog-->
+                    </div>
+                    <!-- /.modal3-->
+
+
+                    <div class="content">
+                        <div>
+                            <table id="datatable2" class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Rendering engine</th>
+                                    <th>Browser</th>
+                                    <th>Platform(s)</th>
+                                    <th>Engine version</th>
+                                    <th>CSS grade</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="odd gradeX">
+                                    <td>Trident</td>
+                                    <td>
+                                        Internet
+                                        Explorer 4.0
+                                    </td>
+                                    <td>Win 95+</td>
+                                    <td class="center"> 4</td>
+                                    <td class="center">X</td>
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>Trident</td>
+                                    <td>
+                                        Internet
+                                        Explorer 5.0
+                                    </td>
+                                    <td>Win 95+</td>
+                                    <td class="center">5</td>
+                                    <td class="center">C</td>
+                                </tr>
+                                <tr class="odd gradeA">
+                                    <td>Trident</td>
+                                    <td>
+                                        Internet
+                                        Explorer 5.5
+                                    </td>
+                                    <td>Win 95+</td>
+                                    <td class="center">5.5</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="even gradeA">
+                                    <td>Trident</td>
+                                    <td>
+                                        Internet
+                                        Explorer 6
+                                    </td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="dump"></div>
+        </div>
+{% endblock %}
+{% block pagescript %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //initialize the javascript
+            App.init();
+            App.dataTables();
+            // $('.md-trigger').modalEffects();
+            App.formElements();
+        });
+        $('#sourceAdd').click(
+                function(){
+                    var sourceId=$("input[name='rad1']:checked").val();
+                    var sourceType=(sourceId==1)? "Дистрибьютор":"Аптечные сети";
+                    var paramId=$("input[name='rad2']:checked").val();
+                    var paramType=(paramId==1)?"Продажи":"Остатки";
+                    var sourceName=$('.select2 option:selected').text();
+                    $('#sourceName').empty().append(sourceName);
+                    $('#params').empty().append(sourceType+','+paramType);
+                });
+        $('#btnSuccessPeriod').click(function(){
+
+            var period=$('#reservation').val().split('-');
+            var sourceId=$("input[name='rad1']:checked").val();
+            var paramId=$("input[name='rad2']:checked").val();
+            var published=new Date($.now());
+            $('#period').empty().append('<p>'+period[0]+'<br>'+period[1]+'</p>');
+            var postData = {__source_id: sourceId,__user_id:1,paramType: paramId,published: published.toString('yyyy-mm-dd HH:MM:SS'), periodStart: period[0], periodEnd: period[1]};
+            $.ajax(
+                    {
+                        url: '/sources/save.json',
+                        type: "POST",
+                        data: postData,
+                        dataType: "html",
+                        success: function(data){console.log(data);$('#dump').html(data);},
+                        error: function(data){ console.log(data);}
+                    });
+        });
+
+        $('#btnFileUpload').click(function(){
+            /*$.ajax(
+                    {
+                        url: '/sources/save.json',
+                        type: "POST",
+                        data: postData,
+                        dataType: "html",
+                        success: function(data){console.log(data);$('#dump').html(data);},
+                        error: function(data){ console.log(data);}
+                    });*/
+            alert('HOLE');
+        });
+
+
+    </script>
+{% endblock %}
