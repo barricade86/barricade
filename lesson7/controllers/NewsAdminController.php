@@ -45,8 +45,8 @@
          $mail=new \PHPMailer();
          $mail->isSMTP();
          $mail->Host='smtp.gmail.com';
-         $mail->Username='shilov.kirill.transas@gmail.com';
-         $mail->Password='qwertyASDFGHzxcvbn';
+         $mail->Username='';
+         $mail->Password='';
          $mail->SMTPAuth = true;
          $mail->SMTPSecure = 'ssl';
          $mail->Port = '465';
